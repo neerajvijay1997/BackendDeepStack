@@ -27,12 +27,23 @@ app.post('/', async (req, res) => {
 
 
 //delete todo
-app.delete('/', async (req, res) => {
+app.post('/delete', async (req, res) => {
   const { id } = req.body
   console.log(id)
   const data = await connection.findOneAndRemove({ id: id })
   console.log(data)
   res.send('deleted data from db')
+})
+
+
+//update todo
+app.post('/update', async (req, res) => {
+  const { id, title, body } = req.body
+  // console.log(req.body)
+  const data = await connection.findOneAndUpdate({ id: id },
+    { $set: { title: title, body: body } })
+  console.log(data)
+  res.send('updated data from db')
 })
 
 
