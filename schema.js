@@ -1,7 +1,9 @@
 const { Schema } = require('mongoose');
 
 const deepStackSchema = new Schema({
-    //write schema here
+    id: Number,
+    title: String,
+    body: String
 })
 
 exports.deepStackSchema = deepStackSchema;
